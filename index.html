@@ -48,12 +48,12 @@
   function repaint(arr) {
     for(var dy = 0;dy < arr.length;dy++) {
       for(var dx = 0;dx < arr[dy].length;dx++) {
-        if(bd[dy][dx] != 0) {
+        if(arr[dy][dx] != 0) {
           ct.beginPath();
           ct.arc(dx*75+75/2+2,dy*75+75/2+2,75/2-2,0, Math.PI * 2, true);
-          if(bd == 1) {
+          if(arr[dy][dx] == 1) {
             ct.fillStyle = "black";
-          } else if(bd == 2) {
+          } else if(arr[dy][dx] == 2) {
             ct.fillStyle = "white";
           }
           ct.fill();
