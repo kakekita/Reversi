@@ -39,7 +39,7 @@
     var y = Math.floor(canvasY/75);
     
     ct.beginPath();
-    ct.arc(x*75+75/2,y*75+75/2,75/2,0, Math.PI * 2, true);
+    ct.arc(x*75+75/2+2,y*75+75/2+2,75/2-2,0, Math.PI * 2, true);
     ct.fillStyle = "lightskyblue";
     ct.fill();
   });
