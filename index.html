@@ -20,18 +20,19 @@
   </style>
 </head>
 <body>
-<div class="box bsize">
+<div id="plate" class="box bsize">
   <canvas id="canvas" width="600" height="600"></canvas>
 </div>
 <script>
   var canvas = document.getElementById("canvas");
   var ct = canvas.getContext("2d");
+  var plate = document.getElementById("plate");
   canvas.addEventListener("click",e=>{
     const rect = e.target.getBoundingClientRect();
     const viewX = e.clientX - rect.left;
     const viewY = e.clientY - rect.top;
-    const scaleWidth =  cvs.clientWidth / cvs.width
-    const scaleHeight =  cvs.clientHeight / cvs.height;
+    const scaleWidth =  canvas.clientWidth / canvas.width
+    const scaleHeight =  canvas.clientHeight / canvas.height;
     const canvasX = Math.floor( viewX / scaleWidth );
     const canvasY = Math.floor( viewY / scaleHeight );
     var x = Math.floor(canvasX/75);
