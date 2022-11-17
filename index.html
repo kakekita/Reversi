@@ -27,6 +27,10 @@
   var canvas = document.getElementById("canvas");
   var ct = canvas.getContext("2d");
   var plate = document.getElementById("plate");
+  var bd = [];
+  for(var i = 0;i < 8;i++) {
+    bd.push([0,0,0,0,0,0,0,0]);
+  }
   canvas.addEventListener("click",e=>{
     const rect = e.target.getBoundingClientRect();
     const viewX = e.clientX - rect.left;
@@ -37,12 +41,26 @@
     const canvasY = Math.floor( viewY / scaleHeight );
     var x = Math.floor(canvasX/75);
     var y = Math.floor(canvasY/75);
-    
-    ct.beginPath();
-    ct.arc(x*75+75/2+2,y*75+75/2+2,75/2-2,0, Math.PI * 2, true);
-    ct.fillStyle = "lightskyblue";
-    ct.fill();
+    bd[y][x] = 1;
+    repaint();
   });
+  
+  function repaint(arr) {
+    for(var dy = 0;dy < arr.length;dy++) {
+      for(var dx = 0;dx < arr[dy].length;dx++) {
+        if(bd[dy][dx] != 0) {
+          ct.beginPath();
+          ct.arc(dx*75+75/2+2,dy*75+75/2+2,75/2-2,0, Math.PI * 2, true);
+          if(bd == 1) {
+            ct.fillStyle = "black";
+          } else if(bd == 2) {
+            ct.fillStyle = "white";
+          }
+          ct.fill();
+        }
+      }
+    }
+  }
 
 </script>
 </body>
