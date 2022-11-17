@@ -31,6 +31,10 @@
   for(var i = 0;i < 8;i++) {
     bd.push([0,0,0,0,0,0,0,0]);
   }
+  bd[3][3] = 101;
+  bd[3][4] = 201;
+  bd[4][3] = 201;
+  bd[4][4] = 101;
   canvas.addEventListener("click",e=>{
     const rect = e.target.getBoundingClientRect();
     const viewX = e.clientX - rect.left;
