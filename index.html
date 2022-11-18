@@ -50,8 +50,19 @@
     repaint(bd);
   });
   
-  function isReturn(arr,y,x) {
+  function isAround(arr,y,x) {
+    var dir = [[-1,0],[-1,1],[0,1],[1,1],[1,0],[1,-1],[0,-1],[-1,-1]];
+    var tmp = [];
+    for(var d of dir) {
+      var y2 = x;
+      var x2 = y;
+      while(0 <= y2&&y2 < 8&&0 <= x2&&x2 < 8) {
+        
+      }
+      tmp.push();
+    }
     
+    return tmp;
   }
   
   function repaint(arr) {
