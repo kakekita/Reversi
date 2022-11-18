@@ -52,10 +52,17 @@
     if(bd[y][x] == 0) {
       bd[y][x] = 101;
       var aGrids = isAround(bd,y,x);
+      var retXY = [];
       for(var g in aGrids) {
         var n = 0;
-        while(turn*100 < aGrids[g][n]&&aGrids[g][n] <= turn*100+15) {
-          
+        var turn2 = 0;
+        if(turn = 1) {
+          turn2 = 2;
+        }else if(turn = 2) {
+          turn2 = 1;
+        }
+        while(n < aGrids[g].length&&turn2*100 < aGrids[g][n]&&aGrids[g][n] <= turn2*100+15) {
+          retXY.push([]);
           n++;
         }
       }
