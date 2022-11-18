@@ -37,6 +37,7 @@
   bd[4][4] = 101;
   repaint(bd);
   var turn = 1;
+  var ps = [1,2];
   var dir = [[-1,0],[-1,1],[0,1],[1,1],[1,0],[1,-1],[0,-1],[-1,-1]];
   canvas.addEventListener("click",e=>{
     const rect = e.target.getBoundingClientRect();
@@ -53,7 +54,7 @@
       var aGrids = isAround(bd,y,x);
       for(var g in aGrids) {
         var n = 0;
-        while(aGrids[g][n] <= turn*100) {
+        while(turn*100 < aGrids[g][n]&&aGrids[g][n] <= turn*100+15) {
           
           n++;
         }
