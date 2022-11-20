@@ -38,7 +38,7 @@
   repaint(bd);
   var turn = 1;
   var ps = [1,2];
-  var dir = [[-1,0],[-1,1],[0,1],[1,1],[1,0],[1,-1],[0,-1],[-1,-1]];
+  var dir = [[-1,0],[-1,1],[0,1],[1,1],[1,0],[1,-1],[0,-1],[-1,-1]];//[ y , x ]
   canvas.addEventListener("click",e=>{
     const rect = e.target.getBoundingClientRect();
     const viewX = e.clientX - rect.left;
@@ -52,7 +52,7 @@
     if(bd[y][x] == 0) {
       bd[y][x] = 101;
       var aGrids = isAround(bd,y,x);
-      var retXY = [];
+      var retXYV = [];
       for(var g in aGrids) {
         var n = 0;
         var turn2 = 0;
@@ -62,13 +62,25 @@
           turn2 = 1;
         }
         while(n < aGrids[g].length&&turn2*100 < aGrids[g][n]&&aGrids[g][n] <= turn2*100+15) {
-          retXY.push([]);
+          retXYV.push([x+dir[g][1]*n, y+dir[g][0]*n,changeCol(aGrids[g][n])]);
           n++;
         }
+      }
+      for(var r in retXYV) {
+        bd[retXYV[r][1]][retXYV[r][0]] = retXYV[r][2];
       }
       repaint(bd);
     }
   });
+  
+  function changeCol(n) {
+    if(200 < n&&n <= 215) {
+      n -= 100;
+    }else if(100 < n&&n <= 115) {
+      n += 100;
+    }
+    return n;
+  }
   
   function isAround(arr,y,x) {
     var tmp = [];
