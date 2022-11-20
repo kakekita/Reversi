@@ -52,9 +52,9 @@
     if(bd[y][x] == 0) {
       bd[y][x] = 101;
       var aGrids = isAround(bd,y,x);
-      alert(aGrids.toString())
       var retXYV = [];
       for(var g = 0;g < aGrids.length;g++) {
+        alert(aGrids[g].toString())
         var n = 0;
         var turn2 = 0;
         if(turn = 1) {
