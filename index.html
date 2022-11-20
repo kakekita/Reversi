@@ -53,7 +53,7 @@
       bd[y][x] = 101;
       var aGrids = isAround(bd,y,x);
       var retXYV = [];
-      for(var g in aGrids) {
+      for(var g = 0;g < aGrids.length;g++) {
         var n = 0;
         var turn2 = 0;
         if(turn = 1) {
@@ -67,7 +67,7 @@
         }
       }
       alert(retXYV.length);
-      for(var r in retXYV) {
+      for(var r = 0;r < retXYV.length;r++) {
         bd[retXYV[r][1]][retXYV[r][0]] = retXYV[r][2];
       }
       repaint(bd);
