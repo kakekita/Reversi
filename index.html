@@ -62,9 +62,15 @@
         }else if(turn = 2) {
           turn2 = 1;
         }
+        var rtmp = [];
         while(n < aGrids[g].length&&turn2*100 < aGrids[g][n]&&aGrids[g][n] <= turn2*100+15) {
-          retXYV.push([x+dir[g][1]*n, y+dir[g][0]*n,changeCol(aGrids[g][n])]);
+          rtmp.push([x+dir[g][1]*n, y+dir[g][0]*n,changeCol(aGrids[g][n])]);
           n++;
+        }
+        if(n < aGrids[g].length&&turn*100 < aGrids[g][n]&&aGrids[g][n] <= turn*100+15) {
+          for(var rt of rtmp) {
+            retXYV.push(rt);
+          }
         }
       }
       alert(retXYV.length);
