@@ -52,6 +52,7 @@
     if(bd[y][x] == 0) {
       bd[y][x] = 101;
       var aGrids = isAround(bd,y,x);
+      alert(aGrids.toString())
       var retXYV = [];
       for(var g = 0;g < aGrids.length;g++) {
         var n = 0;
