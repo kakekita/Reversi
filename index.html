@@ -23,8 +23,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 35.5px;
-      height: 35.5px;
+      width: 30px;
+      height: 30px;
       background: black;
       color: white;
       text-decoration: none;
@@ -37,14 +37,28 @@
 <div id="plate" class="box bsize">
   <canvas id="canvas" width="600" height="600"></canvas>
 </div>
+<div id="stone">
+  
+</div>
 <script>
   var canvas = document.getElementById("canvas");
   var ct = canvas.getContext("2d");
   var plate = document.getElementById("plate");
   var bd = [];
+  var bks = [];
+  var whs = [];
   for(var i = 0;i < 8;i++) {
     bd.push([0,0,0,0,0,0,0,0]);
+    if(i < 4) {
+      bks.push([true,true,true,true,true,true,true,true]);
+    }else {
+      whs.push([true,true,true,true,true,true,true,true]);
+    }
   }
+  bks[0][0] = false;
+  bks[0][1] = true;
+  whs[0][0] = false;
+  whs[0][1] = true;
   bd[3][3] = 101;
   bd[3][4] = 201;
   bd[4][3] = 201;
@@ -130,7 +144,7 @@
     return tmp;
   }
   
-  function repaint(arr) {
+  function repaint(arr,sts1,sts2) {
     for(var dy = 0;dy < arr.length;dy++) {
       for(var dx = 0;dx < arr[dy].length;dx++) {
         if(arr[dy][dx] != 0) {
@@ -143,6 +157,17 @@
           }
           ct.fill();
         }
+      }
+    }
+    for(var dy = 0;dy < sts1.length;dy++) {
+      for(var dx = 0;dx < sts1[dy].length;dx++) {
+      
+      }
+    }
+    
+    for(var dy = 0;dy < sts2.length;dy++) {
+      for(var dx = 0;dx < sts2[dy].length;dx++) {
+      
       }
     }
   }
