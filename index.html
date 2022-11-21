@@ -50,9 +50,9 @@
     var x = Math.floor(canvasX/75);
     var y = Math.floor(canvasY/75);
     if(bd[y][x] == 0) {
-      bd[y][x] = 101;
       var aGrids = isAround(bd,y,x);
       var retXYV = [];
+      var st = false;
       for(var g = 0;g < aGrids.length;g++) {
         alert(aGrids[g].toString())
         var n = 1;
@@ -70,19 +70,22 @@
         if(n < aGrids[g].length&&turn*100 < aGrids[g][n]&&aGrids[g][n] <= turn*100+15) {
           for(var rt of rtmp) {
             retXYV.push(rt);
+            st = true;
           }
         }
       }
-      alert(retXYV.length);
-      for(var r = 0;r < retXYV.length;r++) {
-        bd[retXYV[r][0]][retXYV[r][1]] = retXYV[r][2];
-      }
-      repaint(bd);
-      
-      if(trun == 1) {
-        turn = 2;
-      }else if(turn == 2) {
-        turn = 1;
+      if(st) {
+        alert(retXYV.length);
+        for(var r = 0;r < retXYV.length;r++) {
+          bd[retXYV[r][0]][retXYV[r][1]] = retXYV[r][2];
+        }
+        repaint(bd);
+
+        if(trun == 1) {
+          turn = 2;
+        }else if(turn == 2) {
+          turn = 1;
+        }
       }
     }
   });
