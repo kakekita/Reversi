@@ -64,7 +64,7 @@
         }
         var rtmp = [];
         while(n < aGrids[g].length&&turn2*100 < aGrids[g][n]&&aGrids[g][n] <= turn2*100+15) {
-          rtmp.push([x+dir[g][1]*n, y+dir[g][0]*n,changeCol(aGrids[g][n])]);
+          rtmp.push([y+dir[g][0]*n,x+dir[g][1]*n,changeCol(aGrids[g][n])]);
           n++;
         }
         if(n < aGrids[g].length&&turn*100 < aGrids[g][n]&&aGrids[g][n] <= turn*100+15) {
@@ -75,7 +75,7 @@
       }
       alert(retXYV.length);
       for(var r = 0;r < retXYV.length;r++) {
-        bd[retXYV[r][1]][retXYV[r][0]] = retXYV[r][2];
+        bd[retXYV[r][0]][retXYV[r][1]] = retXYV[r][2];
       }
       repaint(bd);
     }
