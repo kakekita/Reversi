@@ -54,7 +54,7 @@
       var retXYV = [];
       var st = false;
       for(var g = 0;g < aGrids.length;g++) {
-        alert(aGrids[g].toString())
+        //alert(aGrids[g].toString())
         var n = 1;
         var turn2 = 0;
         if(turn == 1) {
@@ -75,7 +75,7 @@
         }
       }
       if(st) {
-        alert(retXYV.length);
+        //alert(retXYV.length);
         bd[y][x] = turn*100+1
         for(var r = 0;r < retXYV.length;r++) {
           bd[retXYV[r][0]][retXYV[r][1]] = retXYV[r][2];
