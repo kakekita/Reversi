@@ -93,8 +93,8 @@
   function isAround(arr,y,x) {
     var tmp = [];
     for(var d of dir) {
-      var y2 = x;
-      var x2 = y;
+      var y2 = y;
+      var x2 = x;
       var t = [];
       while(0 <= y2&&y2 < 8&&0 <= x2&&x2 < 8) {
         t.push(arr[y2][x2]);
