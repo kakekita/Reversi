@@ -78,6 +78,12 @@
         bd[retXYV[r][0]][retXYV[r][1]] = retXYV[r][2];
       }
       repaint(bd);
+      
+      if(trun == 1) {
+        turn = 2;
+      }else if(turn == 2) {
+        turn = 1;
+      }
     }
   });
   
