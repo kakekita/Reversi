@@ -225,7 +225,9 @@
   function ch_point(p,id) {
     if(cho) {
       var sp = id.split("_");
-      var col = document.getElementById(id).style.color;
+      var ele = document.getElementById(id);
+      var style = window.getComputedStyle(ele);
+      var col = style.getPropertyValue('color');
       if(col != "gray") {
         ppt = parseInt(p);
         if(sp[0] == "p1") {
