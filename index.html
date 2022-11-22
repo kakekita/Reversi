@@ -215,6 +215,7 @@
         }else {
           st_ele.insertAdjacentHTML("beforeend", '<a id="p2_'+c+'" onclick="ch_point(this.textContent,this.id)" class="oval white" style="color: gray">'+points[c]+'</a>');
         }
+        c++;
       }
       st_ele.insertAdjacentHTML("beforeend", '<p></p>');
     }
@@ -223,9 +224,20 @@
   
   function ch_point(p,id) {
     if(cho) {
-      ppt = parseInt(p);
-      document.getElementById(id).style.color = "gray";
-      cho = false;
+      var sp = id.split("_");
+      var col = document.getElementById(id).style.color;
+      if(col != "gray") {
+        ppt = parseInt(p);
+        if(sp[0] == "p1") {
+          bks[parseInt(sp[1])] = false;
+        }else {
+          whs[parseInt(sp[1])] = false;
+        }
+        repaint(bd,bks,whs);
+        cho = false;
+      }else {
+        alert("使ったコマです");
+      }
     }
   }
 
