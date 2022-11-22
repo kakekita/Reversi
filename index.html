@@ -175,6 +175,7 @@
         st_ele.insertAdjacentHTML("beforeend", '<a onclick="ch_point(this.textContent)" class="oval">'+points[c]+'</a>');
         c++;
       }
+      st_ele.insertAdjacentHTML("beforeend", '<br>');
     }
     c = 0;
     for(var dy = 0;dy < sts2.length;dy++) {
@@ -182,7 +183,9 @@
         st_ele.insertAdjacentHTML("beforeend", '<a onclick="ch_point(this.textContent)" class="oval">'+points[c]+'</a>');
         c++;
       }
+      st_ele.insertAdjacentHTML("beforeend", '<br>');
     }
+    
   }
   
   function ch_point(p) {
