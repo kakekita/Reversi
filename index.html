@@ -231,9 +231,9 @@
       if(col != "gray") {
         ppt = parseInt(p);
         if(sp[0] == "p1") {
-          bks[parseInt(sp[1])] = false;
+          bks[parseInt(sp[1]/8)][parseInt(sp[1]%8)] = false;
         }else {
-          whs[parseInt(sp[1])] = false;
+          whs[parseInt(sp[1]/8)][parseInt(sp[1]%8)] = false;
         }
         repaint(bd,bks,whs);
         cho = false;
