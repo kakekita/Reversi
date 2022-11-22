@@ -187,6 +187,8 @@
       }
     }
     var st_ele = document.getElementById("stone");
+    var clone = st_ele.cloneNode( false );
+    st_ele.parentNode.replaceChild( clone , st_ele ); 
     var c = 0;
     for(var dy = 0;dy < sts1.length;dy++) {
       for(var dx = 0;dx < sts1[dy].length;dx++) {
