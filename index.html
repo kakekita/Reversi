@@ -194,9 +194,9 @@
     for(var dy = 0;dy < sts1.length;dy++) {
       for(var dx = 0;dx < sts1[dy].length;dx++) {
         if(sts1[dy][dx]) {
-          st_ele.insertAdjacentHTML("beforeend", '<a onclick="ch_point(this.textContent)" class="oval black">'+points[c]+'</a>');
+          st_ele.insertAdjacentHTML("beforeend", '<a onclick="ch_point(this.textContent,this.id)" class="oval black">'+points[c]+'</a>');
         }else {
-          st_ele.insertAdjacentHTML("beforeend", '<a onclick="ch_point(this.textContent)" class="oval black" style="color: gray">'+points[c]+'</a>');
+          st_ele.insertAdjacentHTML("beforeend", '<a onclick="ch_point(this.textContent,this.id)" class="oval black" style="color: gray">'+points[c]+'</a>');
         }
         c++;
         
@@ -209,9 +209,9 @@
         //st_ele.insertAdjacentHTML("beforeend", '<a onclick="ch_point(this.textContent)" class="oval white">'+points[c]+'</a>');
         //c++;
         if(sts2[dy][dx]) {
-          st_ele.insertAdjacentHTML("beforeend", '<a onclick="ch_point(this.textContent)" class="oval white">'+points[c]+'</a>');
+          st_ele.insertAdjacentHTML("beforeend", '<a onclick="ch_point(this.textContent,this.id)" class="oval white">'+points[c]+'</a>');
         }else {
-          st_ele.insertAdjacentHTML("beforeend", '<a onclick="ch_point(this.textContent)" class="oval white" style="color: gray">'+points[c]+'</a>');
+          st_ele.insertAdjacentHTML("beforeend", '<a onclick="ch_point(this.textContent,this.id)" class="oval white" style="color: gray">'+points[c]+'</a>');
         }
       }
       st_ele.insertAdjacentHTML("beforeend", '<p></p>');
@@ -219,7 +219,7 @@
     
   }
   
-  function ch_point(p) {
+  function ch_point(p,id) {
     ppt = parseInt(p);
     
   }
