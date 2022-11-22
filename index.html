@@ -1,6 +1,7 @@
 <!doctype html>
-<html>
+<html lang="ja">
 <head>
+  <meta charset="utf-8">
   <title>オセロ</title>
   <style>
     .box {
@@ -62,6 +63,7 @@
   var bks = [];
   var whs = [];
   for(var i = 0;i < 8;i++) {
+    //bd.push([101,101,202,104,105,208,207,206]);//test
     bd.push([0,0,0,0,0,0,0,0]);
     if(i < 4) {
       bks.push([true,true,true,true,true,true,true,true]);
@@ -78,28 +80,13 @@
   bd[3][4] = 201;
   bd[4][3] = 201;
   bd[4][4] = 101;
+  //bd[3][3] = 0; //test
   repaint(bd,bks,whs);
   var turn = 2;
   var ps = [1,2];
   var dir = [[-1,0],[-1,1],[0,1],[1,1],[1,0],[1,-1],[0,-1],[-1,-1]];//[ y , x ]
   var ppt = 1;
   var cho = true;
-  
-  //----------
-  var rm = remain(bd);
-  if(rm <= 0) {
-    var point = ct_point(bd);
-    alert("黒が"+point[0]+"ポイント");
-    alert("白が"+point[1]+"ポイント");
-    if(point[0] > point[1]) {
-      alert("黒の勝ち");
-    }else if(point[0] < point[1]) {
-      alert("白の勝ち");
-    }else {
-      alert("同点");
-    }
-  }
-  //----------
   canvas.addEventListener("click",e=>{
     const rect = e.target.getBoundingClientRect();
     const viewX = e.clientX - rect.left;
@@ -143,24 +130,27 @@
           bd[retXYV[r][0]][retXYV[r][1]] = retXYV[r][2];
         }
         repaint(bd,bks,whs);
-        var rm = remain(bd);
-        if(rm <= 0) {
-          var point = ct_point(bd);
-          alert("黒が"+point[0]+"ポイント");
-          alert("白が"+point[1]+"ポイント");
-          if(point[0] > point[1]) {
-            alert("黒の勝ち");
-          }else if(point[0] < point[1]) {
-            alert("白の勝ち");
-          }else {
-            alert("同点");
+        setTimeout(function() {
+          var rm = remain(bd);
+          if(rm <= 0) {
+            var point = ct_point(bd);
+            alert("黒が"+point[0]+"ポイント");
+            alert("白が"+point[1]+"ポイント");
+            if(point[0] > point[1]) {
+              alert("黒の勝ち");
+            }else if(point[0] < point[1]) {
+              alert("白の勝ち");
+            }else {
+              alert("同点");
+            }
           }
-        }
-        if(turn == 1) {
-          turn = 2;
-        }else if(turn == 2) {
-          turn = 1;
-        }
+          if(turn == 1) {
+            turn = 2;
+          }else if(turn == 2) {
+            turn = 1;
+          }
+        },1500);
+        
       }
     }
   });
