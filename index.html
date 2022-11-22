@@ -55,6 +55,7 @@
       whs.push([true,true,true,true,true,true,true,true]);
     }
   }
+  var points = [1,1,1,1,1,1,1,1,2,2,2,2,2,2,3,3,3,4,4,4,5,5,5,6,6,6,7,7,8,8];
   bks[0][0] = false;
   bks[0][1] = true;
   whs[0][0] = false;
@@ -108,7 +109,7 @@
         for(var r = 0;r < retXYV.length;r++) {
           bd[retXYV[r][0]][retXYV[r][1]] = retXYV[r][2];
         }
-        repaint(bd);
+        repaint(bd,bks,whs);
 
         if(turn == 1) {
           turn = 2;
@@ -159,17 +160,25 @@
         }
       }
     }
+    var st_ele = document.getElementById("stone");
+    var c = 0;
     for(var dy = 0;dy < sts1.length;dy++) {
       for(var dx = 0;dx < sts1[dy].length;dx++) {
-      
+        st_ele.insertAdjacentHTML("beforeend", '<a onclick="ch_point(this.textContent)" class="oval">'+points[c]+'</a>');
+        c++;
       }
     }
-    
+    c = 0;
     for(var dy = 0;dy < sts2.length;dy++) {
       for(var dx = 0;dx < sts2[dy].length;dx++) {
-      
+        st_ele.insertAdjacentHTML("beforeend", '<a onclick="ch_point(this.textContent)" class="oval">'+points[c]+'</a>');
+        c++;
       }
     }
+  }
+  
+  function ch_point(p) {
+    alert(p);
   }
 
 </script>
