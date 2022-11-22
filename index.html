@@ -42,7 +42,8 @@
     }
     .stones {
       display: flex;
-      flex-wrap: wrap
+      flex-wrap: wrap;
+      width: 465px;
     }
   </style>
 </head>
@@ -83,6 +84,22 @@
   var dir = [[-1,0],[-1,1],[0,1],[1,1],[1,0],[1,-1],[0,-1],[-1,-1]];//[ y , x ]
   var ppt = 1;
   var cho = true;
+  
+  //----------
+  var rm = remain(bd);
+  if(rm <= 0) {
+    var point = ct_point(bd);
+    alert("黒が"+point[0]+"ポイント");
+    alert("白が"+point[1]+"ポイント");
+    if(point[0] > point[1]) {
+      alert("黒の勝ち");
+    }else if(point[0] < point[1]) {
+      alert("白の勝ち");
+    }else {
+      alert("同点");
+    }
+  }
+  //----------
   canvas.addEventListener("click",e=>{
     const rect = e.target.getBoundingClientRect();
     const viewX = e.clientX - rect.left;
@@ -118,7 +135,7 @@
           }
         }
       }
-      if(st) {
+      if(st&&!cho) {
         cho = true;
         //alert(retXYV.length);
         bd[y][x] = turn*100+ppt;
@@ -126,7 +143,19 @@
           bd[retXYV[r][0]][retXYV[r][1]] = retXYV[r][2];
         }
         repaint(bd,bks,whs);
-
+        var rm = remain(bd);
+        if(rm <= 0) {
+          var point = ct_point(bd);
+          alert("黒が"+point[0]+"ポイント");
+          alert("白が"+point[1]+"ポイント");
+          if(point[0] > point[1]) {
+            alert("黒の勝ち");
+          }else if(point[0] < point[1]) {
+            alert("白の勝ち");
+          }else {
+            alert("同点");
+          }
+        }
         if(turn == 1) {
           turn = 2;
         }else if(turn == 2) {
@@ -222,6 +251,19 @@
     
   }
   
+  function remain(arr) {
+    var c = 0;
+    for(var dy = 0;dy < arr.length;dy++) {
+      for(var dx = 0;dx < arr[dy].length;dx++) {
+        if(arr[dy][dx] == 0) {
+          c++;
+        }
+        
+      }
+    }
+    return c;
+  }
+  
   function ch_point(p,id) {
     if(cho) {
       var sp = id.split("_");
@@ -231,16 +273,39 @@
       if(col != "gray") {
         ppt = parseInt(p);
         if(sp[0] == "p1") {
-          bks[parseInt(sp[1]/8)][parseInt(sp[1]%8)] = false;
+          if(turn == 2) {
+            bks[parseInt(sp[1]/8)][parseInt(sp[1]%8)] = false;
+            cho = false;
+          }
         }else {
-          whs[parseInt(sp[1]/8)][parseInt(sp[1]%8)] = false;
+          if(turn == 1) {
+            whs[parseInt(sp[1]/8)][parseInt(sp[1]%8)] = false;
+            cho = false;
+          }
         }
         repaint(bd,bks,whs);
-        cho = false;
       }else {
         alert("使ったコマです");
       }
     }
+  }
+  
+  function ct_point(arr) {
+    var p1 = 0;
+    var p2 = 0;
+    for(var dy = 0;dy < arr.length;dy++) {
+      for(var dx = 0;dx < arr[dy].length;dx++) {
+        if(arr[dy][dx] != 0) {
+          var n = arr[dy][dx];
+          if(200 < n&&n <= 215) {
+            p1 += parseInt(arr[dy][dx]-200);
+          }else if(100 < n&&n <= 115) {
+            p2 += parseInt(arr[dy][dx]-100);
+          }
+        }
+      }
+    }
+    return [p1,p2];//[ 黒, 白 ]
   }
 
 </script>
