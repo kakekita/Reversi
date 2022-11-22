@@ -82,6 +82,7 @@
   var ps = [1,2];
   var dir = [[-1,0],[-1,1],[0,1],[1,1],[1,0],[1,-1],[0,-1],[-1,-1]];//[ y , x ]
   var ppt = 1;
+  var cho = true;
   canvas.addEventListener("click",e=>{
     const rect = e.target.getBoundingClientRect();
     const viewX = e.clientX - rect.left;
@@ -92,7 +93,6 @@
     const canvasY = Math.floor( viewY / scaleHeight );
     var x = Math.floor(canvasX/75);
     var y = Math.floor(canvasY/75);
-    var cho = true;
     if(bd[y][x] == 0) {
       var aGrids = isAround(bd,y,x);
       var retXYV = [];
