@@ -166,16 +166,22 @@
           ct.arc(dx*75+75/2+2,dy*75+75/2+2,75/2-2,0, Math.PI * 2, true);
           if(arr[dy][dx] >= 200) {
             ct.fillStyle = "black";
-            ct.fillStyle = 'white';
-            ct.font = 'bold 60pt sans-serif';
-            ct.fillText(arr[dy][dx]-200, dx*75+75/2+2, dy*75+75/2+2, 75/4*3);
+            ct.fill();
+            ct.fillStyle = "white";
+            ct.font = 'bold 20pt sans-serif';
+            ct.textAlign = "center";
+            ct.textBaseline = "middle";
+            ct.fillText(arr[dy][dx]-200, dx*75+75/2+2, dy*75+75/2+2, 75-4);
           } else if(arr[dy][dx] >= 100) {
             ct.fillStyle = "white";
-            ct.fillStyle = 'black';
-            ct.font = 'bold 60pt sans-serif';
-            ct.fillText(arr[dy][dx]-100, dx*75+75/2+2, dy*75+75/2+2, 75/4*3);
+            ct.fill();
+            ct.fillStyle = "black";
+            ct.font = 'bold 20pt sans-serif';
+            ct.textAlign = "center";
+            ct.textBaseline = "middle";
+            ct.fillText(arr[dy][dx]-100, dx*75+75/2+2, dy*75+75/2+2, 75-4);
           }
-          ct.fill();
+          
         }
       }
     }
