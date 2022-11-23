@@ -257,26 +257,29 @@
   function ch_point(p,id) {
     if(cho) {
       var sp = id.split("_");
-      var ele = document.getElementById(id);
-      var style = window.getComputedStyle(ele);
-      var col = style.getPropertyValue('color');
-      if(col != "gray") {
-        ppt = parseInt(p);
-        if(sp[0] == "p1") {
-          if(turn == 2) {
+      ppt = parseInt(p);
+      if(sp[0] == "p1") {
+        if(turn == 2) {
+          if(bks[parseInt(sp[1]/8)][parseInt(sp[1]%8)]) {
             bks[parseInt(sp[1]/8)][parseInt(sp[1]%8)] = false;
             cho = false;
-          }
-        }else {
-          if(turn == 1) {
-            whs[parseInt(sp[1]/8)][parseInt(sp[1]%8)] = false;
-            cho = false;
+          }else {
+            alert("使ったコマです。");
+            retrun false;
           }
         }
-        repaint(bd,bks,whs);
       }else {
-        alert("使ったコマです");
+        if(turn == 1) {
+          if(whs[parseInt(sp[1]/8)][parseInt(sp[1]%8)]) {
+            whs[parseInt(sp[1]/8)][parseInt(sp[1]%8)] = false;
+            cho = false;
+          }else {
+            alert("使ったコマです。");
+            retrun false;
+          }
+        }
       }
+      repaint(bd,bks,whs);
     }
   }
   
