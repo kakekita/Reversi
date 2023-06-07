@@ -156,6 +156,19 @@
     }
   });
   
+  function cpPosSel() {
+    var big = [] //y,x,c
+    
+    for(var dy=0;dy < bd.length;dy++) {
+      for(var dx=0;dx < bd[dy].length;dx++) {
+        if(bd[dy][dx] == 0) {
+          var tmp = isAround(bd,dy,dx);
+          big.push([dy,dx,tmp.length])
+        }
+      }
+    }
+  }
+  
   function changeCol(n) {
     if(200 < n&&n <= 215) {
       n -= 100;
