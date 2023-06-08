@@ -156,17 +156,26 @@
     }
   });
   
-  function cpPosSel() {
+  function getCPSel() {
     var big = [] //y,x,c
     
     for(var dy=0;dy < bd.length;dy++) {
       for(var dx=0;dx < bd[dy].length;dx++) {
         if(bd[dy][dx] == 0) {
           var tmp = isAround(bd,dy,dx);
-          big.push([dy,dx,tmp.length])
+          var len = 0
+          for(var t of tmp) {
+            len += t.length
+          }
+          big.push([dy,dx,len])
         }
       }
     }
+    big.sort( (a, b) => {
+      return b[b.length-1] - a[a.length-1]
+    });
+    
+    return big.slice(0,3);
   }
   
   function changeCol(n) {
