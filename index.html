@@ -110,7 +110,8 @@
         y = tmp[0];
         var x2 = tmp[4]
         var y2 = tmp[3]
-        ch_point(points[y2*8+x2],"p2_"+String(y2*8+x2))
+        ch_point(points[y2*8+x2],"p2_"+String(parseInt(y2*8+x2)))
+        console.log(tmp)
       }
       if(bd[y][x] == 0) {
         var aGrids = isAround(bd,y,x);
@@ -178,6 +179,7 @@
       for(var dx=0;dx < bd[dy].length;dx++) {
         if(bd[dy][dx] == 0) {
           var tmp = isAround(bd,dy,dx);
+          console.log(tmp)
           var len = 0
           for(var t of tmp) {
             len += t.length
@@ -194,6 +196,7 @@
         }
       }
     }
+    console.log(big)
     big.sort( (a, b) => {
       return b[b.length-1] - a[a.length-1]
     });
