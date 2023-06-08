@@ -63,7 +63,7 @@
   var bd = [];
   var bks = [];
   var whs = [];
-  //const sleep = msec => new Promise(resolve => setTimeout(resolve, msec));
+  const sleep = msec => new Promise(resolve => setTimeout(resolve, msec));
   for(var i = 0;i < 8;i++) {
     //bd.push([101,101,202,104,105,208,207,206]);//test
     bd.push([0,0,0,0,0,0,0,0]);
@@ -90,11 +90,12 @@
   var ppt = 1;
   var cho = true;
                           
-  function clickEvent(e) {
+  async function clickEvent(e) {
     for(var loopC = 0; loopC < 2;loopC++) {
       var x = 0
       var y = 0
-      if(loopC % 2 == 0) {
+      if(loopC == 0) {
+        turn = 2
         const rect = e.target.getBoundingClientRect();
         const viewX = e.clientX - rect.left;
         const viewY = e.clientY - rect.top;
@@ -105,14 +106,20 @@
         x = Math.floor(canvasX/75);
         y = Math.floor(canvasY/75);
       }else {
+        turn = 1
         var tmp = getCPSel(); //y,x,c,y,x
+        console.log(tmp)
         x = tmp[1];
         y = tmp[0];
         var x2 = tmp[4]
         var y2 = tmp[3]
-        ch_point(points[y2*8+x2],"p2_"+String(parseInt(y2*8+x2)))
-        console.log(tmp)
+        var str = "p2_"+String(parseInt(y2*8+x2));
+        document.getElementById(str).click();
+        await sleep(1500)
+        
       }
+      console.log(loopC)
+      console.log(turn);
       if(bd[y][x] == 0) {
         var aGrids = isAround(bd,y,x);
         var retXYV = [];
@@ -160,16 +167,17 @@
                 alert("同点");
               }
             }
-            if(turn == 1) {
+            /*if(turn == 1) {
               turn = 2;
             }else if(turn == 2) {
               turn = 1;
-            }
+            }*/
           },1500);
 
         }
       }
     }
+    turn = 2
   }
   
   function getCPSel() {
@@ -179,10 +187,19 @@
       for(var dx=0;dx < bd[dy].length;dx++) {
         if(bd[dy][dx] == 0) {
           var tmp = isAround(bd,dy,dx);
-          console.log(tmp)
+          //console.log(tmp)
           var len = 0
-          for(var t of tmp) {
-            len += t.length
+          var turn2 = 2;
+          var turn = 1
+          for(var g in tmp) {
+            var n = 1
+            while(n < tmp[g].length&&turn2*100 < tmp[g][n]&&tmp[g][n] <= turn2*100+15) {
+              //rtmp.push([y+dir[g][0]*n,x+dir[g][1]*n,changeCol(aGrids[g][n])]);
+              n++;
+            }
+            if(n < tmp[g].length&&turn*100 < tmp[g][n]&&tmp[g][n] <= turn*100+15) {
+              len += n-1;
+            }
           }
           var ryx = [-1,-1];//y,x
           while(true) {
@@ -192,11 +209,10 @@
               break;
             }
           }
-          big.push([dy,dx,len,ryx[0],ryx[1]])
+          if(len > 0) big.push([dy,dx,len,ryx[0],ryx[1]])
         }
       }
     }
-    console.log(big)
     big.sort( (a, b) => {
       return b[b.length-1] - a[a.length-1]
     });
