@@ -198,7 +198,9 @@
       return b[b.length-1] - a[a.length-1]
     });
     
-    return big.slice(0,3);
+    var b = big.slice(0,3)
+    
+    return b[Math.floor(Math.random() * b.length)];
   }
   
   function changeCol(n) {
