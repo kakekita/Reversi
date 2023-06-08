@@ -167,6 +167,14 @@
           for(var t of tmp) {
             len += t.length
           }
+          var ryx = [-1,-1];
+          while(true) {
+            ryx[0] = Math.floor(Math.random() * whs.length)
+            ryx[1] = Math.floor(Math.random() * whs[ryx[0]].length)
+            if(whs[ryx[0]][ryx[1]]) {
+              break;
+            }
+          }
           big.push([dy,dx,len])
         }
       }
