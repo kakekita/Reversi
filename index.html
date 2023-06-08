@@ -63,7 +63,7 @@
   var bd = [];
   var bks = [];
   var whs = [];
-  const sleep = msec => new Promise(resolve => setTimeout(resolve, msec));
+  //const sleep = msec => new Promise(resolve => setTimeout(resolve, msec));
   for(var i = 0;i < 8;i++) {
     //bd.push([101,101,202,104,105,208,207,206]);//test
     bd.push([0,0,0,0,0,0,0,0]);
@@ -109,7 +109,6 @@
         x = getCPSel[1];
         y = getCPSel[0];
         ch_point(points[y*8+x],y*8+x)
-        await sleep(1500)
       }
       if(bd[y][x] == 0) {
         var aGrids = isAround(bd,y,x);
