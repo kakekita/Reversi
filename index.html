@@ -93,7 +93,6 @@
                           
   async function clickEvent(e) {
     if(!click_tf) return false;
-    click_tf = false;
     for(var loopC = 0; loopC < 2;loopC++) {
       var x = 0
       var y = 0
@@ -124,6 +123,7 @@
       console.log(loopC)
       console.log(turn);
       if(bd[y][x] == 0) {
+        click_tf = false;
         var aGrids = isAround(bd,y,x);
         var retXYV = [];
         var st = false;
