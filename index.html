@@ -89,8 +89,11 @@
   var dir = [[-1,0],[-1,1],[0,1],[1,1],[1,0],[1,-1],[0,-1],[-1,-1]];//[ y , x ]
   var ppt = 1;
   var cho = true;
+  var click_tf = true
                           
   async function clickEvent(e) {
+    if(!click_tf) return false;
+    click_tf = false;
     for(var loopC = 0; loopC < 2;loopC++) {
       var x = 0
       var y = 0
@@ -178,6 +181,7 @@
       }
     }
     turn = 2
+    click_tf = true
   }
   
   function getCPSel() {
