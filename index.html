@@ -329,10 +329,12 @@
     if(cho) {
       var sp = id.split("_");
       ppt = parseInt(p);
+      
       if(sp[0] == "p1") {
         if(turn == 2) {
           if(bks[parseInt(sp[1]/8)][parseInt(sp[1]%8)]) {
             bks[parseInt(sp[1]/8)][parseInt(sp[1]%8)] = false;
+            click_tf = true;
             cho = false;
           }else {
             alert("使ったコマです。");
@@ -343,6 +345,7 @@
         if(turn == 1) {
           if(whs[parseInt(sp[1]/8)][parseInt(sp[1]%8)]) {
             whs[parseInt(sp[1]/8)][parseInt(sp[1]%8)] = false;
+            click_tf = true;
             cho = false;
           }else {
             alert("使ったコマです。");
